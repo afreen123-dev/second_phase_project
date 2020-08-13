@@ -1,0 +1,36 @@
+create database learnersacademy;//db creation
+-------------------------------------------------------
+CREATE TABLE tab_class
+
+    (class_id int PRIMARY KEY AUTO_INCREMENT,
+    std int,
+    division varchar(255)
+);                            /////table creation
+----------------------------------------------------------
+CREATE TABLE tab_teacher
+    (teacher_id int PRIMARY KEY AUTO_INCREMENT,
+    teacher_name varchar(255) NOT NULL,
+    teacher_category varchar(255),
+experience int
+);
+---------------------------------------------------------
+CREATE TABLE tab_student
+    (student_id int PRIMARY KEY AUTO_INCREMENT,
+    student_name varchar(255) NOT NULL,
+    student_dob DATE ,
+class_id int,
+foreign key(class_id) references tab_class(class_id ) ON UPDATE CASCADE on delete Cascade
+);
+
+-------------------------------------------------------
+
+CREATE TABLE tab_subject
+    (sub_id int PRIMARY KEY AUTO_INCREMENT,
+    sub_name varchar(255) NOT NULL,
+    sub_lang varchar(255),
+class_id int,
+teacher_id int,
+foreign key(class_id) references tab_class(class_id ) ON UPDATE CASCADE on delete Cascade,
+foreign key(teacher_id) references tab_teacher( teacher_id) ON UPDATE CASCADE on delete Cascade
+);
+--------------------------------------------------------
